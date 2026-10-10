@@ -1,5 +1,6 @@
 
 import click
+from scripts import database
 from api.engine import DBConn
 from models.base import myBase
 
@@ -27,6 +28,11 @@ def create_tables():
 @cli.command(help='Видалити таблиці в БД')
 def drop_tables():
     myBase.metadata.drop_all(DBConn.engine)
+
+
+@cli.command(help='Заповнити БД тестовими даними')
+def fill_db():
+    database.fill_db()
 
 
 if __name__ == '__main__':
